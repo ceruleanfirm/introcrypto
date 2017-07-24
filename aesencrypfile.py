@@ -13,8 +13,8 @@ except IndexError:
 
 key=raw_input('Encryption Key : ')
 hkey=hashlib.sha256(key).digest()
-iv=hashlib.sha256(str(randint(64,64*64))).digest()    #[:16]
-IV=base64.encodestring(iv)[:16]    # gros pâté
+iv=hashlib.sha256(str(randint(64,64*64))).digest()    #.hexdigest()[:16]
+IV=base64.encodestring(iv)[:16]                       # just for fun ...
 encryption=AES.new(hkey, AES.MODE_CBC, IV)
 with open(fic,'r+') as f_in:
     buf=f_in.read()
